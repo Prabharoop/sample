@@ -73,7 +73,7 @@ class ModelsTestCase(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_flight_page_passengers(self):
-        f = Flight.objects.get(pk=1)
+        f = Flight.objects.all()[0]
         p = Passenger.objects.create(first="Alice", last="Adams")
         f.passengers.add(p)
 
@@ -84,7 +84,7 @@ class ModelsTestCase(TestCase):
         self.assertEqual(response.context["passengers"].count(), 1)
 
     def test_flight_page_non_passengers(self):
-        f = Flight.objects.get(pk=1)
+        f = Flight.objects.all()[0]
         p = Passenger.objects.create(first="Alice", last="Adams")
 
 
